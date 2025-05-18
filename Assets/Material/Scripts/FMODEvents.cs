@@ -7,7 +7,7 @@ public class FMODEvents : MonoBehaviour
     public static FMODEvents instance;
     private EventInstance musicEventAmbient;
     private EventInstance musicEventOnClick;
-    private bool isMusicPlaying = false; // Флаг для проверки, играет ли музыка
+    private bool isMusicPlaying = false;
 
     void Awake()
     {
@@ -31,11 +31,10 @@ public class FMODEvents : MonoBehaviour
         musicEventAmbient = RuntimeManager.CreateInstance("event:/Ambient");
         musicEventOnClick = RuntimeManager.CreateInstance("event:/Click");
 
-        // Запускаем музыку только если она еще не играет
         if (!isMusicPlaying)
         {
             musicEventAmbient.start();
-            isMusicPlaying = true; // Устанавливаем флаг, что музыка играет
+            isMusicPlaying = true;
         }
 
         Vector3 position = transform.position;

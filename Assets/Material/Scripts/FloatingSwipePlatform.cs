@@ -5,7 +5,7 @@ public class PlatformController : MonoBehaviour
     private Vector2 startTouchPosition, endTouchPosition;
     private bool isSwiping;
     public float tiltAngle = 10f; // Угол наклона
-    public float tiltSpeed = 35f; // Скорость наклона
+    public float tiltSpeed = 2f; // Скорость наклона
     public float maxTiltAngle = 15f; // Максимальный угол наклона
 
     void Update()

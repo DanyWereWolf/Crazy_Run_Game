@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public GameObject LosePannel;
     public Text timerText;
     public float timeRemaining = 60f;
+    private bool hasLost = false;
 
     private EventInstance musicEventOnClick;
 
@@ -21,18 +22,22 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-        if (timeRemaining > 0)
+        if (!hasLost)
         {
             timeRemaining -= Time.deltaTime;
             UpdateTimerText();
-        }
-        else
-        {
-            LosePannel.SetActive(true);
-            Time.timeScale = 0f;
-        }
+            if (timeRemaining <= 0)
+            {
+                Lose();
+            }
+        } 
     }
-
+    public void Lose()
+    {
+        hasLost = true;
+        LosePannel.SetActive(true);
+        Time.timeScale = 0f;
+    }
     void UpdateTimerText()
     {
         timerText.text = Mathf.Ceil(timeRemaining).ToString();
